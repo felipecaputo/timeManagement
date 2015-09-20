@@ -1,0 +1,29 @@
+{
+  "name": "time-management",
+  "version": "0.1.0",
+  "description": "A app to manage working time ",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipecaputo/timeManagement.git"
+  },
+  "keywords": [
+    "time",
+    "management"
+  ],
+  "author": "felipe.caputo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felipecaputo/timeManagement/issues"
+  },
+  "homepage": "https://github.com/felipecaputo/timeManagement#readme",
+  "dependencies": {
+    "angular": "^1.5.0-beta.0",
+    "angular-route": "^1.4.6",
+    "angular-ui-bootstrap": "^0.13.4",
+    "bootstrap": "^3.3.5"
+  }
+}

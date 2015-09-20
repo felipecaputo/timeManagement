@@ -1,0 +1,13 @@
+body {
+  background-color: #191919;
+  background-color: rgba(10, 10, 10, 0.8);
+  color: #888888;
+  color: rgba(230, 230, 230, 0.5);
+}
+
+.activity-list-title {
+  font-weight: bolder;
+  text-decoration: underline;
+  color: #161649;
+  color: rgba(20, 20, 60, 0.8);
+}

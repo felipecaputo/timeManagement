@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Time Management</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body ng-app="timeApp">
+    <h2>Time Management</h2>
+    <div class="container-fluid" ng-controller="activitiesController as actvCtrl">
+      <div class="row" ng-repeat="activity in activities">
+        <div class="col-md-4 col-sm-4  col-xs-4">
+          <span>{{activity.name}}</span>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+          <span>{{activity.startDate}}</span>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+          <span>{{activity.endDate}}</span>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+          <span>{{activity.duration()}}</span>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-3">
+          <button type="button" name="btnPlay" class="btn btn-sm btn-success" ng-click="activity.startNewPeriod()" ng-disabled="activity.running()">
+            <i class="glyphicon glyphicon-play"></i>
+          </button>
+          <button type="button" name="btnStop" class="btn btn-sm btn-danger" ng-click="activity.stopPeriod()" ng-disabled="!activity.running()">
+            <i class="glyphicon glyphicon-stop"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary">Teste</button>
+
+    <script src="../node_modules/angular/angular.min.js" charset="utf-8"></script>
+    <script src="../node_modules/angular-route/angular-route.min.js" charset="utf-8"></script>
+    <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/services/timeManagementService.js" charset="utf-8"></script>
+    <script src="js/activities/actititiesController.js" charset="utf-8"></script>
+    <script src="js/factories/timeLineFactory.js" charset="utf-8"></script>    
+    <script src="js/factories/activityFactory.js" charset="utf-8"></script>
+  </body>
+</html>
