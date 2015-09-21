@@ -1,13 +1,11 @@
-angular.module('timeApp').controller('activitiesController', function ($scope, Activity){
-  $scope.activities = [];
-  var act1 = new Activity();
-  act1.name = 'Teste';
-  var act2 = new Activity(2);
-  act2.name = 'Teste2';
-  $scope.activities.push(act1);
-  $scope.activities.push(act2);
+angular.module('timeApp').controller('activitiesController', function ($scope, Activity, activityListService){
+  $scope.activityListService  = activityListService;
 
-  $scope.newActivity = function () {
+  $scope.activityListService.newActivity();
+  $scope.activityListService.newActivity(true);
+
+
+  $scope.newActivityOld = function () {
     var _activity = new Activity();
     var modalInstace = $modal.open({
       animation: true,

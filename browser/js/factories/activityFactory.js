@@ -6,7 +6,7 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
     this.initialize = function () {
       self.id = newId || 0;
       self.item = '';
-      self.name = '';
+      self.name = 'Nova atividade';
       self.startDate = Date.now();
       self.endDate = null;
       self.registrationDate = null;
@@ -16,9 +16,22 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
       _duration = self.getDuration();
     };
 
+    Activity.prototype.fromJsonObj = function (obj) {
+      for (var attr in obj) {
+          if (obj.hasOwnProperty(attr)) this[attr] = obj[attr];
+      }
+      for(var i=0;i<this.timeLines.length;i++){
+        var objTL = this.timeLines[i];
+        this.timeLines[i] = new TimeLine();
+
+        for (var attr in objTL) {
+            if (objTL.hasOwnProperty(attr)) this.timeLines[i][attr] = obj[attr];
+        }
+      }
+    }
+
     Activity.prototype.getDuration = function() {
       return this.timeLines.reduce(function (preValue, curValue) {
-        console.log('Duration -> ', preValue, curValue.duration());
         return preValue + curValue.duration();
       }, 0);
     }
@@ -46,7 +59,6 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
     Activity.prototype.duration = function () {
       var _duration = new Date(0);
       if (!!this.hasActiveTimeLine()) {
-        console.log('Result duration ', this.getDuration());
         _duration = new Date(this.getDuration());
       } else {
         if (!!_duration) {

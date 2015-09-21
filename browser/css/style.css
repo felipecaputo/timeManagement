@@ -11,3 +11,8 @@ body {
   color: #161649;
   color: rgba(20, 20, 60, 0.8);
 }
+
+.activity-list-toolbar {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}

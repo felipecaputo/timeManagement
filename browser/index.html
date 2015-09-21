@@ -7,32 +7,42 @@
     <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body ng-app="timeApp">
-    <h2>Time Management</h2>
-    <div class="container-fluid" ng-controller="activitiesController as actvCtrl">
-      <div class="row" ng-repeat="activity in activities">
-        <div class="col-md-4 col-sm-4  col-xs-4">
-          <button type="button" name="btnShowActivityTimeLine" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon glyphicon-th-list"></i></button>
-          <span>{{activity.name}}</span>
+    <div class="container-fluid">
+      <h2>Time Management</h2>
+      <div class="container-fluid" ng-controller="activitiesController as actvCtrl">
+        <div class="activity-list-toolbar">
+          <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i> Nova Atividade</button>
+          <div class="pull-right">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i> Nova Atividade</button>            
+          </div>
         </div>
-        <div class="col-md-1 col-sm-2 col-xs-2">
-          <span>{{activity.startDate | date : 'dd/MM/yy hh:mm'}}</span>
-        </div>
-        <div class="col-md-1 col-sm-2 col-xs-2">
-          <span>{{activity.endDate | date : 'dd/MM/yy hh:mm'}}</span>
-        </div>
-        <div class="col-md-2 col-sm-2 col-xs-2">
-          <span>{{activity.getDurationStr()}}</span>
-        </div>
-        <div class="col-md-2 col-sm-2 col-xs-3">
-          <button type="button" name="btnPlay" class="btn btn-xs btn-success" ng-click="activity.startNewPeriod()" ng-disabled="activity.running()">
-            <i class="glyphicon glyphicon-play"></i>
-          </button>
-          <button type="button" name="btnStop" class="btn btn-xs btn-danger" ng-click="activity.stopPeriod()" ng-disabled="!activity.running()">
-            <i class="glyphicon glyphicon-stop"></i>
-          </button>
+        <div class="row" ng-repeat="activity in activityListService.activityList">
+          <div class="col-md-4 col-sm-4  col-xs-4">
+            <button type="button" name="btnShowActivityTimeLine" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-th-list"></i></button>
+            <span>{{activity.name}}</span>
+          </div>
+          <div class="col-md-1 col-sm-2 col-xs-2">
+            <span>{{activity.startDate | date : 'dd/MM/yy hh:mm'}}</span>
+          </div>
+          <div class="col-md-1 col-sm-2 col-xs-2">
+            <span>{{activity.endDate | date : 'dd/MM/yy hh:mm'}}</span>
+          </div>
+          <div class="col-md-2 col-sm-2 col-xs-2">
+            <span>{{activity.getDurationStr()}}</span>
+          </div>
+          <div class="col-md-2 col-sm-2 col-xs-3">
+            <button type="button" name="btnPlay" class="btn btn-xs btn-success" ng-click="activity.startNewPeriod()" ng-disabled="activity.running()">
+              <i class="glyphicon glyphicon-play"></i>
+            </button>
+            <button type="button" name="btnStop" class="btn btn-xs btn-danger" ng-click="activity.stopPeriod()" ng-disabled="!activity.running()">
+              <i class="glyphicon glyphicon-stop"></i>
+            </button>
+          </div>
         </div>
       </div>
+
     </div>
+
 
     <button class="btn btn-primary" ng-click="window.openDevTools()">Teste</button>
 
@@ -41,6 +51,7 @@
     <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
     <script src="js/services/timeManagementService.js" charset="utf-8"></script>
+    <script src="js/services/activityListService.js" charset="utf-8"></script>
     <script src="js/activities/actititiesController.js" charset="utf-8"></script>
     <script src="js/activity/activityModalController.js" charset="utf-8"></script>
     <script src="js/factories/timeLineFactory.js" charset="utf-8"></script>
