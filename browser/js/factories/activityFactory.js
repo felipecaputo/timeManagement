@@ -1,4 +1,4 @@
-angular.module('timeApp').factory('Activity', function ($q, TimeLine) {
+angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine) {
   var Activity = function (newId) {
     var self = this;
     var _duration = null;
@@ -18,9 +18,23 @@ angular.module('timeApp').factory('Activity', function ($q, TimeLine) {
 
     Activity.prototype.getDuration = function() {
       return this.timeLines.reduce(function (preValue, curValue) {
-        console.log('Duration: ', preValue, curValue);
+        console.log('Duration -> ', preValue, curValue.duration());
         return preValue + curValue.duration();
       }, 0);
+    }
+
+    Activity.prototype.getDurationStr = function () {
+      var sec_num = Math.floor(this.getDuration() / 1000)
+      var hours   = Math.floor(sec_num / 3600);
+      var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+      var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+      if (hours   < 10) {hours   = "0"+hours;}
+      if (minutes < 10) {minutes = "0"+minutes;}
+      if (seconds < 10) {seconds = "0"+seconds;}
+      var time    = hours+ ':' +minutes+ ':' +seconds;
+      return time;
+
     }
 
     Activity.prototype.hasActiveTimeLine = function () {

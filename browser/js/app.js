@@ -1,1 +1,1 @@
-angular.module('timeApp', []);
+angular.module('timeApp', ['ngAnimate', 'ui.bootstrap']);
