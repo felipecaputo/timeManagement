@@ -23,9 +23,8 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
       for(var i=0;i<this.timeLines.length;i++){
         var objTL = this.timeLines[i];
         this.timeLines[i] = new TimeLine();
-
         for (var attr in objTL) {
-            if (objTL.hasOwnProperty(attr)) this.timeLines[i][attr] = obj[attr];
+            if (objTL.hasOwnProperty(attr)) this.timeLines[i][attr] = objTL[attr];
         }
       }
     }
