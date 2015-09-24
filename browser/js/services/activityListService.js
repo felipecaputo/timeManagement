@@ -1,4 +1,4 @@
-angular.module('timeApp', []).service('activityListService', function (Activity) {
+angular.module('timeApp').service('activityListService', function (Activity) {
   var self = this;
   this.activityList = [];
   if (!!localStorage.getItem('activityList')) {
@@ -17,5 +17,18 @@ angular.module('timeApp', []).service('activityListService', function (Activity)
       _activity.startNewPeriod();
     }
     localStorage.setItem('activityList', JSON.stringify(self.activityList));
+  };
+
+  this.stopAllActivities = function () {
+    self.activityList.forEach(function (activity) {
+      if (activity.running()) {
+        activity.stopPeriod();
+      }
+    })
+  }
+
+  this.startActivity = function (activity) {
+    self.stopAllActivities();
+    activity.startNewPeriod();
   }
 });

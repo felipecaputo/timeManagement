@@ -1,0 +1,36 @@
+<h2>Time Management</h2>
+<div class="container-fluid" ng-controller="activitiesController as actvCtrl">
+  <div class="activity-list-toolbar">
+    <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i></button>
+    <div class="pull-right">
+      <i class="glyphicon glyphicon-plus"></i>
+      <i class="glyphicon glyphicon-cog"></i>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-xs-12 activity-card" ng-repeat="activity in activityListService.activityList">
+      <div class="container-fluid">
+        <h4>{{activity.name}}</h4>
+          <i class="glyphicon glyphicon-option-vertical"</i>
+          <a href="#/Activity/4"><i class="glyphicon glyphicon-pencil" ng-click="editActivity(activity)"></i></a>
+        <div>{{activity.kind}}</div>
+        <div content-editable ng-model="activity.kind"></div>
+        <div>Início: {{activity.startDate | date : 'dd/MM/yy hh:mm'}}</div>
+        <div>Fim: {{activity.endDate | date : 'dd/MM/yy hh:mm'}}</div>
+        <div>Tempo Total: {{activity.getDurationStr()}}</div>
+        <div>
+          <button type="button" name="btnPlay" class="btn btn-success" ng-click="activityListService.startActivity(activity)" ng-disabled="activity.running()">
+            <i class="glyphicon glyphicon-play"></i>
+          </button>
+          <button type="button" name="btnStop" class="btn btn-danger" ng-click="activity.stopPeriod()" ng-disabled="!activity.running()">
+            <i class="glyphicon glyphicon-stop"></i>
+          </button>
+          <button type="button" name="btnStop" class="btn btn-primary" ng-click="activity.stopPeriod()" ng-disabled="activity.registered">
+            <i class="glyphicon glyphicon-ok"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

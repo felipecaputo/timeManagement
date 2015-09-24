@@ -8,33 +8,7 @@
   </head>
   <body ng-app="timeApp">
     <div class="container-fluid">
-      <h2>Time Management</h2>
-      <div class="container-fluid" ng-controller="activitiesController as actvCtrl">
-        <div class="activity-list-toolbar">
-          <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i> Nova Atividade</button>
-          <div class="pull-right">
-            <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i> Nova Atividade</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 col-sm-4 activity-card" ng-repeat="activity in activityListService.activityList">
-            <h4>{{activity.name}}</h4>
-            <div>{{activity.kind}}</div>
-            <div>Início: {{activity.startDate | date : 'dd/MM/yy hh:mm'}}</div>
-            <div>Fim: {{activity.endDate | date : 'dd/MM/yy hh:mm'}}</div>
-            <div>Tempo Total: {{activity.getDurationStr()}}</div>
-            <div>
-              <button type="button" name="btnPlay" class="btn btn-success" ng-click="activity.startNewPeriod()" ng-disabled="activity.running()">
-                <i class="glyphicon glyphicon-play"></i>
-              </button>
-              <button type="button" name="btnStop" class="btn btn-danger" ng-click="activity.stopPeriod()" ng-disabled="!activity.running()">
-                <i class="glyphicon glyphicon-stop"></i>
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <div ng-view>
     </div>
 
     <button class="btn btn-primary" ng-click="window.openDevTools()">Teste</button>
@@ -43,10 +17,11 @@
     <script src="../node_modules/angular-route/angular-route.min.js" charset="utf-8"></script>
     <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js" charset="utf-8"></script>
     <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/directives/contentEditable.js" charset="utf-8"></script>
     <script src="js/services/timeManagementService.js" charset="utf-8"></script>
     <script src="js/services/activityListService.js" charset="utf-8"></script>
     <script src="js/activities/actititiesController.js" charset="utf-8"></script>
-    <script src="js/activity/activityModalController.js" charset="utf-8"></script>
+    <script src="js/activity/activityController.js" charset="utf-8"></script>
     <script src="js/factories/timeLineFactory.js" charset="utf-8"></script>
     <script src="js/factories/activityFactory.js" charset="utf-8"></script>
   </body>

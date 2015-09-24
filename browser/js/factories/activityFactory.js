@@ -19,7 +19,7 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
 
     Activity.prototype.fromJsonObj = function (obj) {
       for (var attr in obj) {
-          if (obj.hasOwnProperty(attr)) this[attr] = obj[attr];
+          if (obj.hasOwnProperty(attr) && (attr != "$$hashKey")) this[attr] = obj[attr];
       }
       for(var i=0;i<this.timeLines.length;i++){
         var objTL = this.timeLines[i];

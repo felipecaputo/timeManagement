@@ -1,9 +1,5 @@
-angular.module('timeApp').controller('activitiesController', function ($scope, Activity, activityListService){
+angular.module('timeApp').controller('activitiesController', function ($scope, Activity, activityListService, $modal){
   $scope.activityListService  = activityListService;
-
-  $scope.activityListService.newActivity();
-  $scope.activityListService.newActivity(true);
-
 
   $scope.newActivityOld = function () {
     var _activity = new Activity();
@@ -18,4 +14,8 @@ angular.module('timeApp').controller('activitiesController', function ($scope, A
       }
     })
   };
+
+  $scope.editActivity = function (activity) {
+
+  }
 });
