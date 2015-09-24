@@ -16,3 +16,16 @@ body {
   padding-top: 5px;
   padding-bottom: 10px;
 }
+
+.activity-card {
+  border-radius: 15px;
+  background-clip: padding-box;
+  background-color: #292929;
+  background-color: rgba(20, 20, 20, 0.8);
+  border: 10px solid transparent;
+  padding: 20px;
+}
+
+.activity-card div {
+  text-align: center;
+}
