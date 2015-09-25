@@ -6,12 +6,12 @@ app.config(function($routeProvider, $locationProvider) {
     templateUrl: 'js/activities/activities.html',
     controller: 'activitiesController',
     resolve: {
-      // I will cause a 1 second delay
-      delay: function($q, $timeout) {
-        var delay = $q.defer();
-        $timeout(delay.resolve, 1000);
-        return delay.promise;
-      }
+      // // I will cause a 1 second delay
+      // delay: function($q, $timeout) {
+      //   var delay = $q.defer();
+      //   $timeout(delay.resolve, 1000);
+      //   return delay.promise;
+      // }
     }
   })
   .when('/Activity/:activityId', {

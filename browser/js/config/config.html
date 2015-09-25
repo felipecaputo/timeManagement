@@ -3,6 +3,23 @@
   <head>
   </head>
   <body>
-    hello World
+    <div class="row">
+      <div class="col-md-2">
+        <h5>Origens</h5>
+        <input type="text" class="form-control" ng-model="newOrigin">
+        <button type="button" class="btn btn-primary" ng-click="addOrigin(newOrigin)">
+          <i class="glyphicon glyphicon-plus"></i>
+        </button>
+        <div class="row" ng-repeat="origin in cfg.origins">
+          <div class="col-md-10">
+            {{origin}}
+          </div>
+          <div class="col-md-2">
+            <i class="glyphicon glyphicon-plus"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </body>
 </html>

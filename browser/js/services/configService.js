@@ -1,4 +1,4 @@
-angular.module('timeApp', []).service('configService', function (storageService) {
+angular.module('timeApp').service('configService', function (storageService) {
   var self = this;
 
   this.categories = [];
