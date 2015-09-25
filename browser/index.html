@@ -8,6 +8,13 @@
   </head>
   <body ng-app="timeApp">
     <div class="container-fluid">
+      <h2>Time Management</h2>
+      <div class="activity-list-toolbar">
+        <div class="pull-right">
+          <i class="glyphicon glyphicon-plus"></i>
+          <a href="#/config"><i class="glyphicon glyphicon-cog"></i></a>
+        </div>
+      </div>
       <div ng-view></div>
     </div>
 
@@ -22,6 +29,7 @@
     <script src="js/services/activityListService.js" charset="utf-8"></script>
     <script src="js/activities/actititiesController.js" charset="utf-8"></script>
     <script src="js/activity/activityController.js" charset="utf-8"></script>
+    <script src="js/config/configController.js" charset="utf-8"></script>
     <script src="js/factories/timeLineFactory.js" charset="utf-8"></script>
     <script src="js/factories/activityFactory.js" charset="utf-8"></script>
   </body>

@@ -1,12 +1,5 @@
-<h2>Time Management</h2>
 <div class="container-fluid" ng-controller="activitiesController as actvCtrl">
-  <div class="activity-list-toolbar">
-    <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i></button>
-    <div class="pull-right">
-      <i class="glyphicon glyphicon-plus"></i>
-      <i class="glyphicon glyphicon-cog" popover-template="js/activities/popOverConfigApp.html" popover-placement="bottom"></i>
-    </div>
-  </div>
+  <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i></button>
   <div class="row">
     <div class="col-md-3 col-sm-4 col-xs-12 activity-card" ng-repeat="activity in activityListService.activityList">
       <div class="container-fluid">

@@ -18,6 +18,10 @@ app.config(function($routeProvider, $locationProvider) {
     templateUrl: 'js/activity/activityView.html',
     controller: 'activityController'
   })
+  .when('/config', {
+    templateUrl: 'js/config/config.html',
+    controller: 'configController'
+  })
   .otherwise({
     redirectTo: '/'
   });
