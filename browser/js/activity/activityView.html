@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div>
+      <input type="text" class="form-control" ng-model="activity.name">
+      <div class="row" ng-repeat="tl in activity.timeLines">
+        <div class="col-sm-2">{{tl.startTime | date : 'dd/MM/yy hh:mm'}}</div>
+        <div class="col-sm-2">{{tl.endTime | date : 'dd/MM/yy hh:mm'}}</div>
+        <div class="col-sm-4">{{tl.description}}</div>
+      </div>
+      <a href="#/">Voltar</a>
+    </div>
+  </body>
+</html>

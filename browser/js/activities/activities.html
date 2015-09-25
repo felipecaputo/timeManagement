@@ -4,15 +4,17 @@
     <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i></button>
     <div class="pull-right">
       <i class="glyphicon glyphicon-plus"></i>
-      <i class="glyphicon glyphicon-cog"></i>
+      <i class="glyphicon glyphicon-cog" popover-template="js/activities/popOverConfigApp.html" popover-placement="bottom"></i>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-sm-4 col-xs-12 activity-card" ng-repeat="activity in activityListService.activityList">
       <div class="container-fluid">
-        <h4>{{activity.name}}</h4>
-          <i class="glyphicon glyphicon-option-vertical"</i>
-          <a href="#/Activity/4"><i class="glyphicon glyphicon-pencil" ng-click="editActivity(activity)"></i></a>
+        <h4>
+          {{activity.name}}
+          <i class="glyphicon glyphicon-option-vertical pull-right"></i>
+          <a href="#/Activity/{{activity.id}}"><i class="glyphicon glyphicon-pencil pull-right" ng-click="editActivity(activity)"></i></a>
+        </h4>
         <div>{{activity.kind}}</div>
         <div content-editable ng-model="activity.kind"></div>
         <div>Início: {{activity.startDate | date : 'dd/MM/yy hh:mm'}}</div>

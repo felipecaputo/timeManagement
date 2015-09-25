@@ -26,6 +26,11 @@ body {
   padding: 20px;
 }
 
+.activity-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .activity-card div {
   text-align: center;
 }

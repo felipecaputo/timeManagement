@@ -31,4 +31,17 @@ angular.module('timeApp').service('activityListService', function (Activity) {
     self.stopAllActivities();
     activity.startNewPeriod();
   }
+
+  this.getActivity = function (id) {
+    var activity = undefined;
+    self.activityList.some(function (activityItem){
+      if (activityItem.id == id) {
+        activity = activityItem;
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return activity;
+  }
 });

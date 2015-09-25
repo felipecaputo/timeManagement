@@ -4,7 +4,7 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
     var _duration = null;
 
     this.initialize = function () {
-      self.id = newId || 0;
+      self.id = newId || Date.now();
       self.item = '';
       self.name = 'Nova atividade';
       self.kind = 'Indefinida';
