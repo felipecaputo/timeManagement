@@ -4,7 +4,13 @@
   </head>
   <body>
     <div>
+      <span class="form-label">Atividade</span>
       <input type="text" class="form-control" ng-model="activity.name">
+      <div class="row" ng-repeat="tl in activity.timeLines">
+        <div class="col-sm-2">{{tl.startTime | date : 'dd/MM/yy hh:mm'}}</div>
+        <div class="col-sm-2">{{tl.endTime | date : 'dd/MM/yy hh:mm'}}</div>
+        <div class="col-sm-4">{{tl.description}}</div>
+      </div>
       <div class="row" ng-repeat="tl in activity.timeLines">
         <div class="col-sm-2">{{tl.startTime | date : 'dd/MM/yy hh:mm'}}</div>
         <div class="col-sm-2">{{tl.endTime | date : 'dd/MM/yy hh:mm'}}</div>

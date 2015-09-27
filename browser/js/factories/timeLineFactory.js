@@ -6,6 +6,7 @@ angular.module('timeApp').factory('TimeLine', function ($q) {
       this.endTime = null;
       this.description = '';
       this.canceled = false;
+      this.manual = false;
 
       TimeLine.prototype.duration = function () {
         var _startDate = new Date(this.startTime);

@@ -7,11 +7,13 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
       self.id = newId || Date.now();
       self.item = '';
       self.name = 'Nova atividade';
+      self.origin = 'Undefined';
       self.kind = 'Indefinida';
       self.startDate = Date.now();
       self.endDate = null;
       self.registrationDate = null;
       self.registered = false;
+      self.finalized = false;
       self.deleted = false;
       self.timeLines = [];
       _duration = self.getDuration();
