@@ -1,22 +1,50 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <div>
-      <span class="form-label">Atividade</span>
-      <input type="text" class="form-control" ng-model="activity.name">
-      <div class="row" ng-repeat="tl in activity.timeLines">
-        <div class="col-sm-2">{{tl.startTime | date : 'dd/MM/yy hh:mm'}}</div>
-        <div class="col-sm-2">{{tl.endTime | date : 'dd/MM/yy hh:mm'}}</div>
-        <div class="col-sm-4">{{tl.description}}</div>
+  <div>
+    <h4>{{activity.id}} - {{activity.name}}</h4>
+    <button type="button"class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok"></span>Salvar</button>
+    <span class="form-label">Atividade</span>
+    <input type="text" class="form-control" ng-model="activity.name">
+    <span class="form-label">Origem</span>
+    <select class="form-control" ng-model="activity.origin">
+      <option ng-repeat="origin in config.origins" value="{{origin}}">{{origin}}</option>
+    </select>
+    <span class="form-label">Tipo</span>
+    <select class="form-control" ng-model="activity.kind">
+      <option ng-repeat="kind in config.kinds" value="{{kind}}">{{kind}}</option>
+    </select>
+    <span class="form-label">Data de Início</span>
+    <p class="input-group">
+      <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" is-open="startCalendarOpened" ng-required="true" close-text="Fechar" ng-model="activity.startDate"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openBeginCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+    <span class="form-label">Data de fim</span>
+    <p class="input-group">
+      <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" is-open="endCalendarOpened" close-text="Fechar" ng-model="activity.endDate"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openBeginCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+    <span class="form-label">Data de registro da atividade na origem</span>
+    <input type="text" class="form-control" ng-model="activity.registrationDate">
+
+    <p>
+
+    </p>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Time lines</div>
+      <div class="row" style="color: black;">
+        <div class="col-md-2 col-sm-2 col-xs-6">Início</div>
+        <div class="col-md-2 col-sm-2 col-xs-6">Fim</div>
+        <div class="col-md-6 col-sm-6 col-xs-12">Descrição</div>
       </div>
-      <div class="row" ng-repeat="tl in activity.timeLines">
-        <div class="col-sm-2">{{tl.startTime | date : 'dd/MM/yy hh:mm'}}</div>
-        <div class="col-sm-2">{{tl.endTime | date : 'dd/MM/yy hh:mm'}}</div>
-        <div class="col-sm-4">{{tl.description}}</div>
+      <div class="row" style="color: black;" ng-repeat="tl in activity.timeLines">
+        <div class="col-md-2 col-sm-2 col-xs-6">{{tl.startTime | date : 'dd/MM/yy hh:mm'}}</div>
+        <div class="col-md-2 col-sm-2 col-xs-6">{{tl.endTime | date : 'dd/MM/yy hh:mm'}}</div>
+        <div class="col-md-3 col-sm-6 col-xs-12">{{tl.description}}</div>
       </div>
-      <a href="#/">Voltar</a>
     </div>
-  </body>
-</html>
+
+    <a href="#/">Voltar</a>
+  </div>

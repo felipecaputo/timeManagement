@@ -2,6 +2,9 @@ angular.module('timeApp').controller('activityController', function ($scope, Act
   $scope.activity = activityListService.getActivity($routeParams.activityId);
   $scope.config = configService;
 
+  $scope.startCalendarOpened = false;
 
-  
+  $scope.openBeginCalendar = function($event) {
+    $scope.startCalendarOpened = true;
+};
 });

@@ -1,15 +1,15 @@
 angular.module('timeApp').service('storageService', function (Activity, TimeLine, $q) {
 
-  var db = new Dexie('timeManagement');
-
-  db.version(1).stores({
-    activities: '++id,item,name,kind,origin,startDate,endDate,registrationDate,registered,finalized,deleted',
-    timeLines: '++id,activityId,startTime,endTime,description,canceled,manual',
-    origins: '++id,origin,deleted',
-    kinds: '++id,kind,color,deleted'
-  });
-
-  db.open();
+  // var db = new Dexie('timeManagement');
+  //
+  // db.version(1).stores({
+  //   activities: '++id,item,name,kind,origin,startDate,endDate,registrationDate,registered,finalized,deleted',
+  //   timeLines: '++id,activityId,startTime,endTime,description,canceled,manual',
+  //   origins: '++id,origin,deleted',
+  //   kinds: '++id,kind,color,deleted'
+  // });
+  //
+  // db.open();
 
   this.saveActivity = function (activity) {
     var deferred = $q.defer();
@@ -40,4 +40,9 @@ angular.module('timeApp').service('storageService', function (Activity, TimeLine
   this.getConfig = function () {
     var loadedCfg = localStorage.getItem('config');
   }
+
+  this.setConfig = function (cfg) {
+    localStorage.setItem('config', JSON.stringify(cfg));
+  }
+
 });

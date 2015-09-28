@@ -21,4 +21,6 @@ angular.module('timeApp').service('configService', function (storageService) {
   this.save = function () {
     storageService.setConfig(JSON.stringify(self));
   }
+
+  this.load();
 });
