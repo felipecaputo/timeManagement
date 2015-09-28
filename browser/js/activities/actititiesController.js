@@ -1,5 +1,6 @@
 angular.module('timeApp').controller('activitiesController', function ($scope, Activity, activityListService, $modal){
   $scope.activityListService  = activityListService;
+  $scope.visualization = 'card';
 
   $scope.newActivityOld = function () {
     var _activity = new Activity();

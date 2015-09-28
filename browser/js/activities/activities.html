@@ -1,31 +1,53 @@
 <div class="container-fluid" ng-controller="activitiesController as actvCtrl">
-  <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i></button>
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-xs-12 activity-card" ng-repeat="activity in activityListService.activityList">
-      <div class="container-fluid">
-        <h4>
-          {{activity.name}}
-          <i class="glyphicon glyphicon-option-vertical pull-right"></i>
-          <a href="#/Activity/{{activity.id}}"><i class="glyphicon glyphicon-pencil pull-right" ng-click="editActivity(activity)"></i></a>
-        </h4>
-        <div>{{activity.kind}}</div>
-        <div content-editable ng-model="activity.kind"></div>
-        <div>Início: {{activity.startDate | date : 'dd/MM/yy hh:mm'}}</div>
-        <div>Fim: {{activity.endDate | date : 'dd/MM/yy hh:mm'}}</div>
-        <div>Tempo Total: {{activity.getDurationStr()}}</div>
-        <div>
-          <button type="button" name="btnPlay" class="btn btn-success" ng-click="activityListService.startActivity(activity)" ng-disabled="activity.running()">
-            <i class="glyphicon glyphicon-play"></i>
-          </button>
-          <button type="button" name="btnStop" class="btn btn-danger" ng-click="activity.stopPeriod()" ng-disabled="!activity.running()">
-            <i class="glyphicon glyphicon-stop"></i>
-          </button>
-          <button type="button" name="btnStop" class="btn btn-primary" ng-click="activity.stopPeriod()" ng-disabled="activity.registered">
-            <i class="glyphicon glyphicon-ok"></i>
-          </button>
+  <button type="button" class="btn btn-primary btn-sm" ng-click="activityListService.newActivity()"> <i class="glyphicon glyphicon-plus"></i>Nova Atividade</button>
+  <div class="btn-group">
+      <label class="btn btn-primary" ng-model="visualization" btn-radio="'card'">Ver cartões</label>
+      <label class="btn btn-primary" ng-model="visualization" btn-radio="'line'">Ver linhas</label>
+  </div>
+  <div class="container-fluid">
+    <!-- Visualization in cards -->
+    <div class="row" ng-if="visualization=='card'">
+      <div class="col-md-3 col-sm-4 col-xs-12 activity-card" ng-repeat="activity in activityListService.activityList">
+        <div class="container-fluid">
+          <h4>
+            {{activity.name}}
+            <i class="glyphicon glyphicon-option-vertical pull-right"></i>
+            <a href="#/Activity/{{activity.id}}"><i class="glyphicon glyphicon-pencil pull-right" ng-click="editActivity(activity)"></i></a>
+          </h4>
+          <div>{{activity.kind}}</div>
+          <div content-editable ng-model="activity.kind"></div>
+          <div>Início: {{activity.startDate | date : 'dd/MM/yy hh:mm'}}</div>
+          <div>Fim: {{activity.endDate | date : 'dd/MM/yy hh:mm'}}</div>
+          <div>Tempo Total: {{activity.getDurationStr()}}</div>
+          <div>
+            <button type="button" name="btnPlay" class="btn btn-xs btn-success" ng-click="activityListService.startActivity(activity)" ng-disabled="activity.running()">
+              <i class="glyphicon glyphicon-play"></i>
+            </button>
+            <button type="button" name="btnStop" class="btn btn-xs btn-danger" ng-click="activity.stopPeriod()" ng-disabled="!activity.running()">
+              <i class="glyphicon glyphicon-stop"></i>
+            </button>
+            <button type="button" name="btnStop" class="btn btn-xs btn-primary" ng-click="activity.stopPeriod()" ng-disabled="activity.registered">
+              <i class="glyphicon glyphicon-ok"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-
+    <!-- END - Visualization in cards -->
+    <!-- Visualization in rows -->
+    <div class="row activity-card" ng-if="visualization=='line'" ng-repeat="activity in activityListService.activityList">
+      <div class="col-md-1 col-sm-2 col-xs-2">
+        <button type="button" name="btnPlay" class="btn btn-success" ng-click="activityListService.startActivity(activity)" ng-hide="activity.running()">
+          <i class="glyphicon glyphicon-play"></i>
+        </button>
+        <button type="button" name="btnStop" class="btn btn-danger" ng-click="activity.stopPeriod()" ng-show="activity.running()">
+          <i class="glyphicon glyphicon-stop"></i>
+        </button>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        {{activity.name}}
+      </div>
+    </div>
+    <!-- END - Visualization in rows -->
   </div>
 </div>
