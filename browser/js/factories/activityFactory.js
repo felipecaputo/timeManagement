@@ -7,8 +7,9 @@ angular.module('timeApp').factory('Activity', function ($q, $rootScope, TimeLine
       self.id = newId || Date.now();
       self.item = '';
       self.name = 'Nova atividade';
-      self.origin = 'Undefined';
-      self.kind = 'Indefinida';
+      self.project = '';
+      self.origin = '';
+      self.kind = '';
       self.startDate = Date.now();
       self.endDate = null;
       self.registrationDate = null;

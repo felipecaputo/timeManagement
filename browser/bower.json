@@ -1,0 +1,30 @@
+{
+  "name": "timeManagement",
+  "version": "0.0.1",
+  "homepage": "inProgress",
+  "authors": [
+    "Felipe Caputo <felipe.caputo@gmail.com>"
+  ],
+  "description": "A small app to manage and record your time and shows to you in reports",
+  "main": "index.html",
+  "keywords": [
+    "time-management"
+  ],
+  "license": "GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.13.4",
+    "angular-route": "~1.4.7",
+    "angular": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "NgDexie": "ng-dexie#~0.0.16",
+    "firebase": "~2.3.1"
+  }
+}
